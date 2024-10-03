@@ -1,0 +1,18 @@
+version: '3.9'
+services:
+  app:
+    build: .
+    ports:
+      - "8000:3000"
+    depends_on:
+      - mongodb_service
+      
+  mongodb_service:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
